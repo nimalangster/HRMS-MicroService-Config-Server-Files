@@ -1,0 +1,48 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hrms_system
+    username: postgres
+    password: manager
+    driver-class-name: org.postgresql.Driver
+
+
+  jpa: 
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+    properties:
+      hibernate:
+        default_schema: profile
+        show_sql: true
+        temp:
+          use_jdbc_metadata_defaults: false
+
+    hibernate:
+      ddl-auto: update
+      
+      
+
+
+  main:
+    allow-bean-definition-overriding: true
+
+
+
+
+
+server:
+ servlet:  
+    context-path: /profile
+    session:
+     cookie:
+      name: UISESSION
+
+
+security:  
+  oauth2:
+    client:
+      clientId: mobile
+      clientSecret: pin
+      accessTokenUri: http://localhost:9090/oauth/token
+      userAuthorizationUri: http://localhost:9090/oauth/authorize
+      
+    resource:
+      userInfoUri: http://localhost:9090/rest/user/principal
